@@ -8,7 +8,7 @@ const client = new MongoClient(config.mongodb.uri);
 const db = client.db();
 
 export const auth = betterAuth({
-    database: mongodbAdapter(db, {
-        client,
-    }),
+  database: mongodbAdapter(db, {
+    client,
+  }),
 });
