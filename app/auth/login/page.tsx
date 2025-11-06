@@ -1,7 +1,16 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import LoginTab from "./_components/login-tab";
 import SignupTab from "./_components/signup-tab";
+import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
+import SocialAuthButtons from "./_components/social-auth-buttons";
 
 export default function LoginPage() {
   return (
@@ -22,6 +31,10 @@ export default function LoginPage() {
             <CardContent>
               <LoginTab />
             </CardContent>
+            <Separator />
+            <CardFooter className="grid gap-5">
+              <SocialAuthButtons />
+            </CardFooter>
           </Card>
         </TabsContent>
 

@@ -110,7 +110,7 @@ export default function SignupTab() {
         />
 
         {/* Submit Button */}
-        <Button type="submit" className="w-full mt-3" disabled={isSubmitting}>
+        <Button type="submit" className="w-full mt-1" disabled={isSubmitting}>
           <LoadingSwap isLoading={isSubmitting}>Signup</LoadingSwap>
         </Button>
       </form>
