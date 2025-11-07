@@ -5,13 +5,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth-client";
 import { Loader2 } from "lucide-react";
+import BetterAuthActionButton from "@/components/auth/better-auth-action-button";
 
 export default function HomePage() {
   const { data: session, isPending } = authClient.useSession();
-
-  const handleSignout = async () => {
-    await authClient.signOut();
-  };
 
   if (isPending) {
     return (
@@ -40,9 +37,13 @@ export default function HomePage() {
         <>
           <h1 className="text-4xl font-medium">Welcome {session.user.name}</h1>
           <div>
-            <Button variant="destructive" onClick={handleSignout}>
+            <BetterAuthActionButton
+              variant="destructive"
+              successMessage="Signout Successful"
+              action={() => authClient.signOut()}
+            >
               Signout
-            </Button>
+            </BetterAuthActionButton>
           </div>
         </>
       )}

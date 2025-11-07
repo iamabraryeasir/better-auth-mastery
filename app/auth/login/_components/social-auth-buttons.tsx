@@ -7,6 +7,7 @@ import {
   SUPPORTED_OAUTH_PROVIDERS,
 } from "@/lib/o-auth-providers";
 import { authClient } from "@/lib/auth-client";
+import BetterAuthActionButton from "@/components/auth/better-auth-action-button";
 
 export default function SocialAuthButtons() {
   return (
@@ -15,12 +16,12 @@ export default function SocialAuthButtons() {
         const { icon, name } = SUPPORTED_OAUTH_PROVIDER_DETAILS[provider];
 
         return (
-          <Button
+          <BetterAuthActionButton
             key={provider}
             variant="outline"
             className="w-full flex items-center justify-center"
-            onClick={() => {
-              authClient.signIn.social({ provider, callbackURL: "/" });
+            action={() => {
+              return authClient.signIn.social({ provider, callbackURL: "/" });
             }}
           >
             <Image
@@ -31,7 +32,7 @@ export default function SocialAuthButtons() {
               className="mr-2"
             />
             {name}
-          </Button>
+          </BetterAuthActionButton>
         );
       })}
     </>

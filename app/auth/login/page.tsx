@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Card,
   CardContent,
@@ -9,10 +11,22 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import LoginTab from "./_components/login-tab";
 import SignupTab from "./_components/signup-tab";
 import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
 import SocialAuthButtons from "./_components/social-auth-buttons";
+import { authClient } from "@/lib/auth-client";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    authClient.getSession().then((session) => {
+      if (session.data !== null) {
+        router.push("/");
+      }
+    });
+  }, []);
+
   return (
     <div className="min-h-screen flex items-center justify-center">
       <Tabs defaultValue="login" className="w-[400px]">
